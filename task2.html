@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Status</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            height: 100vh;
+            margin: 0;
+            background-color: #f8f8f8;
+        }
+        .sidebar {
+            width: 80px;
+            background: #222;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px 0;
+            position: fixed;
+            height: 100vh;
+            justify-content: space-between;
+        }
+        .sidebar .icons {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 25px;
+        }
+        .sidebar i {
+            font-size: 24px;
+            cursor: pointer;
+            color: white;
+            transition: transform 0.2s;
+        }
+        .sidebar i:hover {
+            transform: scale(1.1);
+        }
+        .profile {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .profile img {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            border: 2px solid white;
+        }
+        .container {
+            flex-grow: 1;
+            margin-left: 90px;
+            width: calc(100% - 90px);
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            position: sticky;
+            top: 0;
+            background: white;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .header .right-icons {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .header i {
+            font-size: 22px;
+            cursor: pointer;
+            color: #333;
+            transition: transform 0.2s;
+        }
+        .header i:hover {
+            transform: scale(1.1);
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .section {
+            background: #eee;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .section h3 {
+            margin-bottom: 10px;
+        }
+        .orders {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+            gap: 10px;
+            padding: 10px;
+            justify-content: center;
+        }
+        .order {
+            padding: 12px;
+            background: #ddd;
+            border-radius: 5px;
+            font-weight: bold;
+            text-align: center;
+        }
+        .ready .order {
+            background: green;
+            color: white;
+        }
+        @media (max-width: 600px) {
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <script>
+        function toggleFullscreen() {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen();
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="icons">
+            <i class="fa-solid fa-house"></i>
+            <i class="fa-solid fa-chart-bar"></i>
+            <i class="fa-solid fa-comment"></i>
+            <i class="fa-solid fa-bell"></i>
+            <i class="fa-solid fa-file"></i>
+        </div>
+        <div class="profile">
+            <img src="https://via.placeholder.com/45" alt="Profile">
+            <i class="fa-solid fa-circle" style="color:red; margin-top: 5px;"></i>
+        </div>
+    </div>
+    <div class="container">
+        <div class="header">
+            <div>Order Status</div>
+            <div class="right-icons">
+                <i class="fa-solid fa-expand" onclick="toggleFullscreen()"></i>
+                <i class="fa-solid fa-clock"></i> 08:10
+            </div>
+        </div>
+        <div class="grid-container">
+            <div class="section preparing">
+                <h3>Preparing</h3>
+                <div class="orders">
+                    <div class='order'>3881</div><div class='order'>3882</div><div class='order'>3883</div><div class='order'>3884</div><div class='order'>3885</div>
+                    <div class='order'>3886</div><div class='order'>3887</div><div class='order'>3888</div><div class='order'>3889</div><div class='order'>3890</div>
+                    <div class='order'>3891</div><div class='order'>3892</div><div class='order'>3893</div><div class='order'>3894</div><div class='order'>3895</div>
+                </div>
+            </div>
+            <div class="section ready">
+                <h3>Ready</h3>
+                <div class="orders">
+                    <div class='order ready'>3900</div><div class='order ready'>3901</div><div class='order ready'>3902</div><div class='order ready'>3903</div>
+                    <div class='order ready'>3904</div><div class='order ready'>3905</div><div class='order ready'>3906</div><div class='order ready'>3907</div>
+                    <div class='order ready'>3908</div><div class='order ready'>3909</div><div class='order ready'>3910</div><div class='order ready'>3911</div>
+                    <div class='order ready'>3912</div><div class='order ready'>3913</div><div class='order ready'>3914</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
